@@ -3,7 +3,7 @@ abstract class Bebida(var id: Int, var litros: Double, var precio: Double, var m
     open fun getInfo() {
         println("ID: $id")
         println("Litros: $litros")
-        println("Precio: $precio")
+        println("Precio: $precio€")
         println("Marca: $marca")
     }
 }

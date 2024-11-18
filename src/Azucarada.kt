@@ -7,8 +7,12 @@ class Azucarada(val porcentajeAzucar: Int, val promocion: Boolean, id: Int, litr
     }
 
     override fun getInfo() {
-        println("Porcentaje de Azúcar: $porcentajeAzucar")
-        println("Promoción: $promocion")
+        println("Porcentaje de Azúcar: $porcentajeAzucar%")
+        if (promocion == true) {
+            println("Promoción: Sí")
+        } else {
+            println("Promoción: No")
+        }
         super.getInfo()
     }
 }

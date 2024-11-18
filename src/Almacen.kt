@@ -7,6 +7,8 @@ class Almacen() {
     var array5: Array<Bebida?> = arrayOfNulls(5)
     var y: Int = 0
     var precioTotal: Double = 0.0
+    var precioMarca: Double = 0.0
+    var precioColumna: Double = 0.0
 
     fun agregarBebida(b: Bebida) {
         try {
@@ -50,7 +52,7 @@ class Almacen() {
                 for (posicion in array1.indices) {
                     if (array1[posicion] == null) {
                         array1[posicion] = b
-                        return 
+                        return
                     }
                 }
                 for (posicion in array2.indices) {
@@ -137,7 +139,72 @@ class Almacen() {
         }
     }
 
-    fun calcularPrecio() {
+    fun calcularPrecio(): String {
+        try {
+            for (posicion in array1.indices) {
+                precioTotal += array1[posicion]?.precio ?: 0.0
+            }
+            for (posicion in array2.indices) {
+                precioTotal += array2[posicion]?.precio ?: 0.0
+            }
+            for (posicion in array3.indices) {
+                precioTotal += array3[posicion]?.precio ?: 0.0
+            }
+            for (posicion in array4.indices) {
+                precioTotal += array4[posicion]?.precio ?: 0.0
+            }
+            for (posicion in array5.indices) {
+                precioTotal += array5[posicion]?.precio ?: 0.0
+            }
+        } catch (e: NullPointerException) {
+            println("Error al mostrar bebida: ${e.message}")
+        }
+        return ("El precio total de todas las bebidas es: $precioTotal€")
+    }
 
+    fun calcularPrecio(marca: String): String {
+        try {
+            for (posicion in array1.indices) {
+                if (array1[posicion]?.marca.equals(marca)) {
+                    precioMarca += array1[posicion]?.precio ?: 0.0
+                }
+            }
+            for (posicion in array2.indices) {
+                if (array2[posicion]?.marca.equals(marca)) {
+                    precioMarca += array2[posicion]?.precio ?: 0.0
+                }
+            }
+            for (posicion in array3.indices) {
+                if (array3[posicion]?.marca.equals(marca)) {
+                    precioMarca += array3[posicion]?.precio ?: 0.0
+                }
+            }
+            for (posicion in array4.indices) {
+                if (array4[posicion]?.marca.equals(marca)) {
+                    precioMarca += array4[posicion]?.precio ?: 0.0
+                }
+            }
+            for (posicion in array5.indices) {
+                if (array5[posicion]?.marca.equals(marca)) {
+                    precioMarca += array5[posicion]?.precio ?: 0.0
+                }
+            }
+        } catch (e: NullPointerException) {
+            println("Error al mostrar bebida: ${e.message}")
+        }
+        return ("El precio total de todas las bebidas de la marca $marca es: $precioMarca€")
+    }
+
+    fun calcularPrecio(columna: Int): String {
+        try {
+            precioColumna += array1[columna - 1]?.precio ?: 0.0
+            precioColumna += array2[columna - 1]?.precio ?: 0.0
+            precioColumna += array3[columna - 1]?.precio ?: 0.0
+            precioColumna += array4[columna - 1]?.precio ?: 0.0
+            precioColumna += array5[columna - 1]?.precio ?: 0.0
+        } catch (e: NullPointerException) {
+            println("Error al mostrar bebida: ${e.message}")
+        }
+        return ("El precio total de todas las bebidas de la columna $columna es: $precioColumna€")
     }
 }
